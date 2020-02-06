@@ -25,6 +25,11 @@ public class MAV extends UAV{
 		this.size = other.size;
 	}
 	
+	// Clone method
+	public MAV clone() {
+		return new MAV(this);
+	}
+	
 	public String getModel() {
 		return this.model;
 	}

@@ -27,6 +27,11 @@ public class Helicopter extends Airplane{
 		this.passengerCap = anotherCopter.passengerCap;
 	}
 	
+	// Clone method
+	public Helicopter clone() {
+		return new Helicopter(this);
+	}
+	
 	// Accessor methods
 	public int getCylinderNum() {
 		return this.cylinderNum;

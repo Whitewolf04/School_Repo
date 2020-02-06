@@ -24,6 +24,11 @@ public class AgriculturalDrone extends UAV{
 		this.carryCap = other.carryCap;
 	}
 	
+	// Clone method
+	public AgriculturalDrone clone() {
+		return new AgriculturalDrone(this);
+	}
+	
 	public String getBrand() {
 		return this.brand;
 	}

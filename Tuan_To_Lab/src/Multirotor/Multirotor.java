@@ -24,6 +24,11 @@ public class Multirotor extends Helicopter{
 		this.rotorNum = another.rotorNum;
 	}
 	
+	// Clone method
+	public Multirotor clone() {
+		return new Multirotor(this);
+	}
+	
 	public int getRotorNum() {
 		return this.rotorNum;
 	}

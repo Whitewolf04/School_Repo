@@ -23,6 +23,11 @@ public class Quadcopter extends Helicopter{
 		
 	}
 	
+	// Clone method
+	public Quadcopter clone() {
+		return new Quadcopter(this);
+	}
+	
 	public int getMaxFlyingSpeed() {
 		return this.maxFlyingSpeed;
 	}

@@ -20,6 +20,11 @@ public class UAV extends FlyingObject{
 		this.weight = another.weight;
 	}
 	
+	// Clone method
+	public UAV clone() {
+		return new UAV(this);
+	}
+	
 	public double getWeight() {
 		return this.weight;
 	}

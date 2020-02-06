@@ -24,6 +24,11 @@ public class Airplane extends FlyingObject{
 		this.hp = anotherPlane.hp;
 	}
 	
+	// Clone method
+	public Airplane clone() {
+		return new Airplane(this);
+	}
+	
 	// Accessor
 	public String getBrand() {
 		return this.brand;
@@ -63,4 +68,5 @@ public class Airplane extends FlyingObject{
 			return(brand.equalsIgnoreCase(other.brand) && price == other.price && hp == other.hp);
 		}
 	}
+
 }
