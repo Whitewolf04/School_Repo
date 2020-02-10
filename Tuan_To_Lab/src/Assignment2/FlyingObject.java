@@ -38,4 +38,25 @@ public class FlyingObject {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public static FlyingObject[] sort(FlyingObject[] array) {
+		FlyingObject[] a = new FlyingObject[array.length];
+		for(int j = 0; j < array.length; j++) {
+			a[j] = array[j];
+		}
+		
+		FlyingObject temp = null;
+		for(int i = 0; i < a.length - 1; i++) {
+			for(int k = i+1; k < a.length; k++) {
+				if(a[k].getPrice() > a[i].getPrice()){
+					temp = a[i];
+					a[i] = a[k];
+					a[k] = temp;
+				}
+			}
+		}
+		
+		
+		return(a);
+	}
 }
