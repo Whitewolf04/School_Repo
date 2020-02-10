@@ -9,11 +9,14 @@ import uav.UAV;
 import Multirotor.Multirotor;
 
 public class Driver {
-	public static void copyFlyingObject(FlyingObject[] array) {
+	public static FlyingObject[] copyFlyingObject(FlyingObject[] array) {
 		FlyingObject[] newArray = new FlyingObject[array.length];
 		for(int i = 0; i < array.length; i++) {
-			newArray[i] = array[i].clone();
+			newArray[i] = new FlyingObject(array[i]);
 		}
+		return newArray;
+		
+		
 	}
 	
 	public static void main(String[] args) {
@@ -45,9 +48,36 @@ public class Driver {
 		
 		FlyingObject[] myArray = {myPlane1, myPlane2, myPlane3, helicopter, helicopter2, quadcopter, multirotor, myUAV, myUAV2, myUAV3,
 									agriculturalDrone, whatDrone, thisDrone, mav, myMAV};
-		searchPrice(myArray);
+		//searchPrice(myArray);
+		
+		
+		FlyingObject[] copyCat=copyFlyingObject(myArray);
+		
+		for(int i=0;i<copyCat.length;i++)
+			System.out.println(copyCat[i]);
+		
+		
+		
+		
+		
+		myArray[0].setPrice(5);
+		
+		System.out.println("*********************");
+		
+		for(int i=0;i<myArray.length;i++)
+			System.out.println(myArray[i]);
+		
+		System.out.println("*********************");
+
+		for(int i=0;i<copyCat.length;i++)
+			System.out.println(copyCat[i]);
+		
+		
+		
+		
 	}
 	
+	/*
 	public static void searchPrice(FlyingObject[] a) {
 		boolean pass = false;
 		int count = 0;
@@ -97,6 +127,11 @@ public class Driver {
 			
 			count++;
 		}while(!pass);
+	}
+	*/
+	
+	public static void searchPrice(FlyingObject[] a) {
+		
 	}
 
 }

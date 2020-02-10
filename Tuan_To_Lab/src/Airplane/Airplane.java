@@ -7,14 +7,14 @@ public class Airplane extends FlyingObject{
 	protected int hp;
 	
 	public Airplane() {
+		super();
 		brand = null;
-		price = 0.0;
 		hp = 0;
 	}
 	
 	public Airplane(String brand, double price, int hp) {
+		super(price);
 		this.brand = brand;
-		this.price = price;
 		this.hp = hp;
 	}
 	
@@ -42,10 +42,6 @@ public class Airplane extends FlyingObject{
 	// Mutator
 	public void setBrand(String brand) {
 		this.brand = brand;
-	}
-	
-	public void setPrice(double price) {
-		this.price = price;
 	}
 	
 	public void setHP(int hp) {

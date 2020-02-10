@@ -6,12 +6,12 @@ public class UAV extends FlyingObject{
 	protected double weight;
 	
 	public UAV() {
-		price = 0.0;
+		super();
 		weight = 0.0;
 	}
 	
 	public UAV(double weight, double price) {
-		this.price = price;
+		super(price);
 		this.weight = weight;
 	}
 	
