@@ -44,94 +44,37 @@ public class Driver {
 		System.out.println(myUAV);
 		System.out.println(agriculturalDrone);
 		System.out.println(mav);
-		System.out.println();
+		System.out.println("----------------------------------------------");
+		System.out.println("Search price method:");
 		
-		FlyingObject[] myArray = {myPlane1, myPlane2, myPlane3, helicopter, helicopter2, quadcopter, multirotor, myUAV, myUAV2, myUAV3,
-									agriculturalDrone, whatDrone, thisDrone, mav, myMAV};
-		//searchPrice(myArray);
+		FlyingObject[] myArray = {myMAV, myPlane1, myPlane2, myPlane3, helicopter, helicopter2, quadcopter, multirotor, myUAV, myUAV2, myUAV3,
+									agriculturalDrone, mav, whatDrone, thisDrone};
+		searchPrice(myArray);
+		System.out.println("---------------------------------------------");
 		
-		
-		FlyingObject[] copyCat=copyFlyingObject(myArray);
-		
-		for(int i=0;i<copyCat.length;i++)
-			System.out.println(copyCat[i]);
-		
-		
-		
-		
-		
-		myArray[0].setPrice(5);
-		
-		System.out.println("*********************");
-		
-		for(int i=0;i<myArray.length;i++)
-			System.out.println(myArray[i]);
-		
-		System.out.println("*********************");
-
-		for(int i=0;i<copyCat.length;i++)
-			System.out.println(copyCat[i]);
-		
-		
-		
-		
+		FlyingObject[] copyCat = copyFlyingObject(myArray);
+		System.out.println("Copy of the original array:");
+		for(FlyingObject f: copyCat) {
+			System.out.println(f);
+		}
+		/* This copy is not successful because it can only copy the attribute that exist in the super class FlyingObject.This happens 
+		 * because polymorphism does not apply to copy constructors, so copyFlyingObject method only uses the copy constructor of FlyingObject Class
+		 */
 	}
 	
-	/*
 	public static void searchPrice(FlyingObject[] a) {
-		boolean pass = false;
-		int count = 0;
-		int minimumIndex = -1, minimumIndexSec = -1;
-		do {
-			FlyingObject[] custom;
-			
-			if(count == 0) {
-				custom = new FlyingObject[a.length];
-				for(int k = 0; k < a.length; k++) {
-					custom[k] = a[k].clone();
-				}
-			} else{
-				pass = true;
-				custom = new FlyingObject[a.length - 1];
-				for(int k = 0; k < custom.length; k++) {
-					if(k < minimumIndex) {
-						custom[k] = a[k].clone();
-					} else{
-						custom[k] = a[k+1].clone();
-					}
-				}
+		FlyingObject[] newArray = FlyingObject.sort(a);
+		int indexCheapest = -1, index2ndCheapest = -1;
+		for(int i = 0; i < a.length; i++) {
+			if(a[i].equals(newArray[(newArray.length - 1)])) {
+				indexCheapest = i;
+			} else if(a[i].equals(newArray[newArray.length - 2])) {
+				index2ndCheapest = i;
 			}
-			
-			double minimumPrice = custom[0].getPrice();
-			
-			for(int i = 0; i < custom.length; i++) {
-				if(custom[i].getPrice() < minimumPrice) {
-					minimumPrice = custom[i].getPrice();
-					if(count == 0) {
-						minimumIndex = i;
-					}else {
-						minimumIndexSec = i >= minimumIndex? i+1 : i;
-					}
-				}
-			}
-
-			for(int k = 0; k < custom.length; k++) {
-				if(custom[k].getPrice() == minimumPrice) {
-					if(count == 0) {
-						System.out.println(custom[k] + "\t\t-\tIndex: " + minimumIndex);
-					}else {
-						System.out.println(custom[k] + "\t\t-\tIndex: " + minimumIndexSec);
-					}
-				}
-			}
-			
-			count++;
-		}while(!pass);
-	}
-	*/
-	
-	public static void searchPrice(FlyingObject[] a) {
+		}
 		
+		System.out.println(newArray[(newArray.length - 1)] + "\t\t-\tindex: " + indexCheapest);
+		System.out.println(newArray[newArray.length - 2] + "\t\t-\tindex: " + index2ndCheapest);
 	}
 
 }
