@@ -1,23 +1,46 @@
 package Drone;
 
+//--------------------------------------------------
+// Part: MAV Class
+// Written by: Tuan To || 40114920
+//--------------------------------------------------
+
 import uav.UAV;
 
+/**
+* Represents a MAV
+* @author Tuan To 
+* @student_id 40114920
+* course COMP 249 Section S 
+*/
 public class MAV extends UAV{
 	private String model;
 	private double size;
 	
+	/**
+	* Creates an empty MAV 
+	* Sets all attributes to default values
+	*/
 	public MAV() {
 		super();
 		model = null;
 		size = 0.0;
 	}
 	
+	/**
+	* Creates a MAV with set attributes 
+	* @param weight, price, model, size 
+	*/
 	public MAV(double weight, double price, String model, double size) {
 		super(weight, price);
 		this.model = model;
 		this.size = size;
 	}
 	
+	/**
+	* Creates a MAV by copying another MAV 
+	* @param other Another MAV 
+	*/
 	public MAV(MAV other) {
 		this.weight = other.weight;
 		this.price = other.price;
@@ -25,26 +48,36 @@ public class MAV extends UAV{
 		this.size = other.size;
 	}
 	
-	// Clone method
-	public MAV clone() {
-		return new MAV(this);
-	}
-	
+	/**
+	* Gets the model of the MAV 
+	* @return The model of the MAV as a String
+	*/
 	public String getModel() {
 		return this.model;
 	}
 	
+	/**
+	* Gets the size of the MAV
+	* @return The size of the MAV as a double 
+	*/
 	public double getSize() {
 		return this.size;
 	}
 	
-	// toString method
+	/**
+	* Prints out all attributes of the MAV
+	* @return A string describing the MAV 
+	*/
 	public String toString() {
 		return("This MAV is model " + model + ", weights " + weight + " pounds and costs " + price 
 				+ "$. It has a size of " + size + " inches.");
 	}
 	
-	// equals method
+	/**
+	* Compares two MAV 
+	* @param otherObj Another MAV
+	* @return The truth value of the comparison
+	*/
 	public boolean equals(Object otherObj) {
 		if(otherObj == null) {
 			return false;
