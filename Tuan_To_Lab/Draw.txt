@@ -1,0 +1,10 @@
+Circle filled at (2.0, 3.0) with radius 1.0, and color green
+Circle filled at (5.0, 2.0) with radius 4.0, and color green
+Rectangle filled with upper upper-left corner at (1.0, 1.0) and lower right corner at (5.0, 5.0), and color green
+Rectangle filled with upper upper-left corner at (2.0, 3.0) and lower right corner at (5.0, 6.0), and color green
+Rectangle filled with upper upper-left corner at (-1.0, -2.0) and lower right corner at (3.0, 4.0), and color green
+Circle filled at (2.0, 3.0) with radius 1.0, and color black
+Circle filled at (5.0, 2.0) with radius 4.0, and color red
+Rectangle drawn with upper upper-left corner at (1.0, 1.0) and lower right corner at (5.0, 5.0), and color green
+Rectangle filled with upper upper-left corner at (2.0, 3.0) and lower right corner at (5.0, 6.0), and color white
+Rectangle filled with upper upper-left corner at (-1.0, -2.0) and lower right corner at (3.0, 4.0), and color blue

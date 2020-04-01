@@ -1,0 +1,3 @@
+The 10th position of the Tribonacci array is the number: 81
+The 9th position of the Tribonacci array is the number: 44
+The 7th position of the Tribonacci array is the number: 13

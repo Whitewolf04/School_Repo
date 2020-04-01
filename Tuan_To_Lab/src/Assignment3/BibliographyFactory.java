@@ -3,15 +3,52 @@ package Assignment3;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Bibliography Factory that takes in .bib files and create 3 versions (IEEE, ACM, and NJ) of each file
+ * @author Tuan To
+ * @student_id 40114920
+ * @course COMP 249 Section S
+ */
+
 public class BibliographyFactory {
 	public static void main(String[] args) {
 		String filepath = null;
+		Scanner sc = null;
 		
 		for(int i = 1; i < 11; i++) {
 			filepath = "Latex" + i + ".bib";
+			// Try to open the files first to see whether any of them doesn't exist
+			try {
+				sc = new Scanner(new FileInputStream(filepath));
+			} catch(FileNotFoundException e) {
+				System.out.println("Could not open input file " + filepath + " for reading!");
+				System.out.println("Please check if the file exists!");
+				System.out.println("Program will close after closing any opened files.");
+				sc.close();
+				System.exit(0);
+			} finally {
+				sc.close();
+			}
+			// After confirming existence, process the file
 			processFilesForValidation(i, filepath);
 		}
 		
+		// Delete all empty files
+		for(int i = 1; i < 11; i++) {
+			String filepathIEEE = "IEEE" + i + ".json";
+			String filepathACM = "ACM" + i + ".json";
+			String filepathNJ = "NJ" + i + ".json";
+			File ieee = new File(filepathIEEE);
+			File acm = new File(filepathACM);
+			File nj = new File(filepathNJ);
+			if(ieee.length() == 0) {
+				ieee.delete();
+				acm.delete();
+				nj.delete();
+			}
+		}
+		
+		// User prompting to output the file to the screen
 		int count = 1;
 		BufferedReader br = null;
 		int lines = 0;
@@ -46,7 +83,13 @@ public class BibliographyFactory {
 		
 	}
 	
+	/**
+	 * Process file for validation method that checks the validity of a file and create 3 versions
+	 * @param The number of the file to create a parallel versions
+	 * @param The filename to open the file
+	 */
 	public static void processFilesForValidation(int num, String filename){
+		// Create new file for each version and the temp file for writing before flushing to the actual file
 		File ogFile = new File(filename);
 		File ieeeFile = new File("IEEE" + num + ".json");
 		File acmFile = new File("ACM" + num + ".json");
@@ -55,10 +98,12 @@ public class BibliographyFactory {
 		File tempACM = new File("ACMtemp.json");
 		File tempNJ = new File("NJtemp.json");
 		
+		// Initiate read and write variables
 		Scanner sc = null;
 		PrintWriter ieee = null;
 		PrintWriter acm = null;
 		PrintWriter nj = null;
+		// Open the streams, ready to read or write
 		try {
 			sc = new Scanner(new FileInputStream(ogFile));
 			ieee = new PrintWriter(new FileOutputStream(tempIEEE));
@@ -78,15 +123,18 @@ public class BibliographyFactory {
 			myFile += "\n";
 		}
 		
-		//  Processing the File after reading
+		//  Split file into articles for getting information
 		String[] articles = myFile.split("@ARTICLE");
 		String[] linesInArticle;
 		
 		for(int i = 1; i <= articles.length-1; i++) {
 			linesInArticle = articles[i].split("\n");
+			// Initiate values to be stored into
 			String journal = null, title = null, year = null, volume = null;
 			String number = null, pages = null, doi = null, month = null;
 			String[] authors = null;
+			
+			// Go through the array to store values to corresponding areas
 			for(int k = 0; k < linesInArticle.length; k++) {
 				linesInArticle[k] = linesInArticle[k].trim();
 				if(linesInArticle[k].startsWith("author")) {
@@ -317,7 +365,6 @@ public class BibliographyFactory {
 				}
 			}
 			
-			//System.out.println("Process for file Latex" + num + ".bib reaches here");
 			// Printing for IEEE format
 			for(int a = 0; a < authors.length; a++) {
 				ieee.print((a == authors.length-1)? authors[a]: (authors[a] + ","));
@@ -343,7 +390,9 @@ public class BibliographyFactory {
 		ieee.close();
 		acm.close();
 		nj.close();
+		// Close the streams for temp file
 		
+		// Reading from temp file to write to real file
 		Scanner scIEEE = null;
 		Scanner scACM = null;
 		Scanner scNJ = null;
@@ -373,9 +422,10 @@ public class BibliographyFactory {
 		ieee.close();
 		acm.close();
 		nj.close();
-		System.out.println(tempIEEE.delete());
-		System.out.println(tempACM.delete());
-		System.out.println(tempNJ.delete());
+		tempIEEE.delete();
+		tempACM.delete();
+		tempNJ.delete();
+		// Close all streams and delete the temp files
 		
 	}
 	
