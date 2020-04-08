@@ -48,4 +48,15 @@ public class Player implements Comparable<Player>, Cloneable{
 	public Player clone() {
 		return(new Player(this));
 	}
+	
+	public boolean equals(Object otherObj) {
+		if(otherObj == null) {
+			return false;
+		} else if(getClass() != otherObj.getClass()) {
+			return false;
+		} else {
+			Player otherPlr = (Player) otherObj;
+			return(otherPlr.name.equals(name) && otherPlr.health == health);
+		}
+	}
 }

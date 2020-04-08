@@ -1,10 +1,14 @@
+import java.util.Scanner;
 
 public class Playground {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String myString = "hi5";
-		System.out.println(Integer.parseInt(myString));
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Please enter your word: ");
+		String word = kb.next();
+		
+		System.out.println(word.contains("'"));
 	}
 
 }
