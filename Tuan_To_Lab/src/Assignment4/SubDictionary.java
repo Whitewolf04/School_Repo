@@ -7,7 +7,15 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
 
+// Note: This Virtual Machine cannot read a certain characters in the file, so there are some errors in the output dictionary file
+/**
+ * Creating a dictionary of every words of a certain input file
+ * @author Tuan To
+ * @student_id 40114920
+ * @course COMP 249 Section S
+ */
 public class SubDictionary {
+	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		ArrayList<String> entries = new ArrayList<String>();
 		Scanner sc = null;
@@ -38,9 +46,6 @@ public class SubDictionary {
 			contentOfFile += sc.next();
 			contentOfFile += " ";
 		}
-		//Testing--------------------------------------
-		System.out.println(contentOfFile);
-		//----------------------------------------------
 		sc.close();
 		
 		passages = contentOfFile.split("\n");
@@ -91,11 +96,14 @@ public class SubDictionary {
 			}
 			pw.println();
 		}
+		System.out.println("Done processing the file!!!");
 		
 		pw.close();
+		kb.close();
 	}
 	
 	public static ArrayList<String> sort(ArrayList<String> list){
+		@SuppressWarnings("unchecked")
 		ArrayList<String> result = (ArrayList<String>) list.clone();
 		String temp;
 		// Deleting the repeated words and upper case every words
